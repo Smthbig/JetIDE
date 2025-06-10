@@ -14,17 +14,17 @@ JetIDE aims to **redefine mobile development** by offering a **complete Android 
 
 ## 📦 Features
 
-[] **Full Android App Build System**  
-[] Kotlin & Java Support (with LSP)  
-[] Jetpack Compose & XML layout compatible  
-[] Gradle Project Runner & APK Builder  
-[] ADB Debugging & Logcat Viewer  
-[] Git Integration + GitHub Automation  
-[] Offline AI Code Assistant (via llama.cpp / Gemini)  
-[] Syntax Highlighting & Formatter  
-[] Plugin System (customizable via shell or GUI)  
-[] Terminal-Based or WebView GUI Interface  
-[] Lightweight & Battery Friendly  
+[ ] **Full Android App Build System**  
+[ ] Kotlin & Java Support (with LSP)  
+[ ] Jetpack Compose & XML layout compatible  
+[ ] Gradle Project Runner & APK Builder  
+[ ] ADB Debugging & Logcat Viewer  
+[ ] Git Integration + GitHub Automation  
+[ ] Offline AI Code Assistant (via llama.cpp / Gemini)  
+[ ] Syntax Highlighting & Formatter  
+[ ] Plugin System (customizable via shell or GUI)  
+[ ] Terminal-Based or WebView GUI Interface  
+[ ] Lightweight & Battery Friendly  
 
 ---
 
