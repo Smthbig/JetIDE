@@ -1,176 +1,188 @@
 # 🚀 JetIDE – Android Development Studio in Your Pocket
 
-> **JetIDE** is a blazing-fast, full-featured Android IDE built for mobile-first developers who want to write, build, and debug Android apps directly on their phone using Termux.
+> **JetIDE** is a blazing-fast, full-featured Android IDE built for mobile-first developers who want to write, build, and debug Android apps directly on their phone — through a powerful **CLI (Termux)** or rich **Jetpack Compose UI**.
 
 ---
 
 ## 🎯 Vision
 
-JetIDE aims to **redefine mobile development** by offering a **complete Android Studio-like experience inside Termux**. It’s designed for coders, power users, and students who want to build production-ready Android apps on-the-go — without ever touching a laptop.
+JetIDE redefines mobile app development by delivering a **complete Android Studio alternative** that fits in your pocket. It’s crafted for developers, power users, and learners who want to build **production-grade Android apps anytime, anywhere** — without needing a PC.
 
 ---
 
-# But there is a big problem, I have not much time
+## 📦 Feature Overview
 
-## 📦 Features
-
-[ ] **Full Android App Build System**  
-[ ] Kotlin & Java Support (with LSP)  
-[ ] Jetpack Compose & XML layout compatible  
-[ ] Gradle Project Runner & APK Builder  
-[ ] ADB Debugging & Logcat Viewer  
-[ ] Git Integration + GitHub Automation  
-[ ] Offline AI Code Assistant (via llama.cpp / Gemini)  
-[ ] Syntax Highlighting & Formatter  
-[ ] Plugin System (customizable via shell or GUI)  
-[ ] Terminal-Based or WebView GUI Interface  
-[ ] Lightweight & Battery Friendly  
+✅ Dual Mode: **CLI in Termux** + **Native Android App**  
+✅ Kotlin & Java Language Support (with LSP support in roadmap)  
+✅ Jetpack Compose & XML layout compatible  
+✅ Full Android Build Toolchain (Gradle + AAPT + DEX)  
+✅ APK Installer & QR Sharing  
+✅ ADB Debugging & Logcat Viewer  
+✅ Git Integration & GitHub CLI Automation  
+✅ Offline AI Assistant (LLaMA.cpp / Gemini / OpenAI)  
+✅ Syntax Highlighting (via Prism.js / Monaco)  
+✅ Formatters (ktlint / spotless / shell formatter plugins)  
+✅ Plugin System for extensibility (via GUI or shell)  
+✅ Battery-efficient, ultra-lightweight footprint
 
 ---
 
-## 🔧 Components & Stack
+## 🔧 Architecture & Stack
 
 | Component        | Description                                       |
 |------------------|---------------------------------------------------|
-| **Termux**       | Shell environment & CLI for Android               |
-| **OpenJDK 17+**  | Java runtime for compiling apps                   |
-| **Android SDK**  | Command line tools, build-tools, platform-tools  |
-| **Gradle**       | App project compilation & packaging               |
-| **ADB**          | Debugging and live testing                        |
-| **Kotlin LSP**   | Kotlin code suggestions (via LSP or Neovim)       |
-| **llama.cpp**    | Offline AI coding assistant                       |
-| **Prism.js**     | Syntax highlighter in embedded Web IDE            |
-| **Zenity/YAD**   | Optional GUI interface for menu & settings        |
+| **Termux**       | Shell + environment for CLI-based workflows       |
+| **OpenJDK 17+**  | Java runtime for compiling Android apps           |
+| **Android SDK**  | Build-tools, platform-tools, ADB, etc.            |
+| **Gradle**       | Project automation and APK building               |
+| **ADB**          | Device deployment and debugging                   |
+| **LSP / Neovim** | Code intelligence and syntax support (WIP)        |
+| **llama.cpp**    | Local/offline AI assistant (code generation)      |
+| **Gemini API**   | Optional cloud-based assistant (secure via token) |
+| **Jetpack Compose** | Rich UI for the native app IDE                 |
+| **Prism.js / Monaco** | Syntax highlighting in WebView IDE          |
+| **Zenity / YAD** | Optional GUI dialogs for plugin launcher (CLI)    |
 
 ---
 
 ## 🧪 How It Works
 
-### Termux Setup
+### 💻 CLI Mode (via Termux)
 
-- Install JetIDE scripts in Termux
-- Fetch Android SDK + platform tools
-- Create, import, or edit a Gradle project
-- Build APK using `./gradlew assembleDebug`
-- Install directly on your device via ADB
-- Debug with `logcat` and interactive CLI
+1. Install Termux + JetIDE scripts
+2. Auto-install Android SDK, NDK, OpenJDK
+3. Create or import your Gradle project
+4. Run `./gradlew assembleDebug` to build
+5. Install APK directly to device via ADB
+6. Debug using `logcat`, `debug.sh`, or emulator shell
 
-### Optional GUI (Web IDE)
+### 📱 App Mode (Native Android IDE)
 
-- Embedded WebView UI
-- JetBrains-like interface using Ace/Monaco
-- Plugin support (Formatter, LSP, AI Assist)
+1. Use embedded WebView-based editor (CodeMirror/Monaco)
+2. Write code in Kotlin/Java with syntax highlighting
+3. Run LLM-backed AI assistant for suggestions
+4. Build APK via `ApkBuilder.kt` or invoke CLI under the hood
+5. Git, format, or preview Compose — all in-app
 
 ---
 
 ## 🚀 Getting Started
 
 ```bash
-# Clone JetIDE installer
+# 1. Clone JetIDE installer (Termux CLI mode)
 git clone https://github.com/yourname/JetIDE.git
 cd JetIDE
 
-# One-time setup
+# 2. Run one-time environment setup
 bash setup.sh
 
-# Build and install APK
+# 3. Build and install your app
 bash build.sh ~/MyApp debug
 
-# Launch debug log
+# 4. Debug logs with ADB
 bash debug.sh com.example.myapp
 ````
 
 ---
 
 ## 📁 Project Structure
-Cli
+
+### CLI Side (Termux)
+
 ```
 JetIDE/
-├── setup.sh         # One-time environment and SDK install
-├── build.sh         # Gradle APK builder and installer
-├── debug.sh         # Logcat debugger for Android apps
-├── ide-ui/          # Web-based UI (Ace/Monaco/Prism.js)
+├── setup.sh         # One-time Android SDK, JDK, Gradle install
+├── build.sh         # APK builder and deployer
+├── debug.sh         # ADB logcat viewer + debugger
+├── ide-ui/          # WebView UI (Ace/Monaco/Prism.js)
 ├── plugins/         # Formatters, AI Assist, Git manager, etc.
-└── README.md        # You're reading it
+└── README.md
 ```
-App
+
+### Native App (Android IDE)
+
 ```
-com.jetide
-│
-├── MainActivity.kt            // Root activity with Compose + NavHost
+com.jetide/
+├── MainActivity.kt            # Root Compose-based IDE shell
 ├── ui/
 │   ├── screens/
-│   │   ├── EditorScreen.kt    // WebView Code Editor
-│   │   ├── TerminalScreen.kt  // Terminal UI or termux shell
-│   │   ├── GitScreen.kt       // Git operations UI
-│   │   └── SettingsScreen.kt  // Theme/API key/settings
+│   │   ├── EditorScreen.kt    # WebView code editor with Prism
+│   │   ├── TerminalScreen.kt  # Embedded shell or CLI interface
+│   │   ├── GitScreen.kt       # GitHub/Git UI and config
+│   │   └── SettingsScreen.kt  # API key, theme, layout prefs
 │   └── theme/
-│       ├── Theme.kt           // Material3 theme definitions
-│       └── ColorScheme.kt     // Optional: expanded color definitions
+│       ├── Theme.kt           # Material 3 colors and typography
+│       └── ColorScheme.kt     # Dark/light scheme support
 ├── ai/
-│   └── AiAssistant.kt         // Gemini/OpenAI Kotlin assistant handler
+│   └── AiAssistant.kt         # Gemini / LLaMA.cpp integration
 ├── git/
-│   └── GitManager.kt          // Git shell interface / JGit wrapper
+│   └── GitManager.kt          # Git commands & repo manager
 ├── formatter/
-│   └── Formatter.kt           // KtLint or Spotless integration
+│   └── Formatter.kt           # Source formatting engine
 ├── buildsystem/
-│   └── ApkBuilder.kt          // Compile + DEX + APK creation logic
+│   └── ApkBuilder.kt          # Gradle + AAPT + DEX builder logic
 └── plugin/
-    └── PluginManager.kt       // Runtime plugin loading
+    └── PluginManager.kt       # Plugin injection system
 ```
----
-
-## 💡 Roadmap
-
-* [ ] Web IDE with full Compose preview
-* [ ] Real-time Kotlin LSP engine
-* [ ] Plugin manager (formatter, snippet injector)
-* [ ] APK Signing and Play Store integration
-* [ ] QR code APK installer
-* [ ] AI pair programming mode with Gemini
 
 ---
 
-## 🤖 AI Assistant Integration
+## 🧠 AI Assistant Integration
 
-JetIDE supports **offline AI coding** using:
+JetIDE supports **offline and online AI assistants**:
 
-* [`llama.cpp`](https://github.com/ggerganov/llama.cpp)
-* Google Gemini or OpenAI ChatGPT API (via WebView or CLI)
+| Model          | Mode    | Use Cases                        |
+| -------------- | ------- | -------------------------------- |
+| **llama.cpp**  | Offline | Full privacy, no internet needed |
+| **Gemini API** | Online  | Rich, contextual LLM assistance  |
+| **OpenAI API** | Online  | GPT-4/3.5 powered answers        |
 
-Features:
+### Features:
 
-* Code generation
-* Context-aware fix suggestions
-* File summarization and refactoring
+* Code generation / completion
+* Smart fix suggestions
+* File summarization & refactoring
+* Prompt injection via plugin or button
 
 ---
 
 ## 📲 Demo Screenshots
 
-> *(Coming soon — you can contribute UI mockups or screenshots!)*
+*(Coming soon — contribute UI mockups or screenshots!)*
+
+---
+
+## 📅 Roadmap
+
+* [ ] Web IDE with Compose live preview
+* [ ] Kotlin LSP integration via Neovim or LSP bridge
+* [ ] Plugin marketplace (formatters, snippets, helpers)
+* [ ] APK signing + Play Store deploy CLI
+* [ ] QR code APK installer + sharer
+* [ ] Gemini-powered pair programming mode
 
 ---
 
 ## 🛠 Requirements
 
-* Android 8.0+ with Termux
-* At least 2 GB free space
-* Git, curl, unzip
-* Internet connection (for initial setup only)
+* Android 8.0+ (ARM64 recommended)
+* Termux latest version (F-Droid preferred)
+* \~2 GB free space for SDK + tools
+* Git, curl, unzip installed
+* Internet (for setup or Gemini/OpenAI API)
 
 ---
 
 ## 🧑‍💻 Contributing
 
-JetIDE is in active development. If you’re passionate about mobile coding, shell automation, or open-source Android tools:
+JetIDE is open-source and in active development. If you're into mobile dev tools, CLI automation, or Kotlin/Compose magic:
 
 ```bash
-# Fork it, clone it, hack it!
-git clone https://github.com/Smthbig/JetIDE.git
+# Clone and start building
+git clone https://github.com/yourname/JetIDE.git
 ```
 
-Please submit PRs, feature requests, or bug reports.
+Feel free to send pull requests, report bugs, or suggest features!
 
 ---
 
@@ -180,13 +192,15 @@ MIT License © 2025 \[mr]
 
 ---
 
-## 📣 Acknowledgements
+## 🙏 Acknowledgements
 
 Inspired by:
 
 * Termux community
-* Android SDK CLI
-* JetBrains IntelliJ
-* Llama.cpp / Gemini APIs
+* Jetpack Compose & Android SDK CLI
+* JetBrains IntelliJ + Android Studio
+* Gemini, GPT-4, and LLaMA.cpp projects
 * You — the mobile-first developer ❤️
+
+
 
